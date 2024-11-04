@@ -130,11 +130,41 @@ console.log(edads);
 
 //#endregion
 
-//#region 
-function invertirString(str){
-    return
+//#region
+function invertirString(str) {
+  if (typeof str !== "string") {
+    return "Input must be a string";
+  }
+  return str.split("").reverse().join("");
 }
-const inverString = invertirString('hola');
+const inverString = invertirString("francisco2024");
 console.log(inverString);
+
+//#endregion
+
+//#region
+function contarVocales(str) {
+  const vocales = "aeiouáéíóúAEIOUÁÉÍÓÚ";
+  let contador = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    if (vocales.includes(str[i])) {
+      contador++;
+    }
+  }
+  return contador;
+}
+const contarVocales1 = contarVocales("Moana");
+console.log(contarVocales1);
+
+//#endregion
+
+//#region
+function filtrarPares(array) {
+  const array_pares = array.filter((num) => num % 2 === 0);
+  return array_pares;
+}
+const filtrar = filtrarPares([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+console.log(filtrar);
 
 //#endregion
