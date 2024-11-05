@@ -219,7 +219,52 @@ function Palindromo(str) {
   return normalizar === invertir;
 }
 // const resultadoPalindromo = Palindromo("Anita lava la tina");
-console.log(Palindromo("Anita lava la tina"));
-console.log(Palindromo("Hola Mundo"));
+console.log(Palindromo("Luz azul"));
+console.log(Palindromo("Somos o no somos"));
+
+//#endregion
+
+//#region
+function SumarArreglo(arr) {
+  let acumador = 0;
+  for (let i = 0; i < arr.length; i++) {
+    acumador += arr[i];
+  }
+  return acumador;
+}
+console.log(SumarArreglo([1, 2, 3, 4, 5]));
+
+//#endregion
+
+//#region
+function crearUsuario(nombre, edad) {
+  const usaurios = {
+    nombre: nombre,
+    edad: edad,
+  };
+  return usaurios;
+}
+console.log(crearUsuario("Juan", 32));
+console.log(crearUsuario("Feña", 32));
+console.log(crearUsuario("Camilo", 32));
+console.log(crearUsuario("Karol", 32));
+console.log(crearUsuario("Mama", 32));
+console.log(crearUsuario("Papa", 32));
+
+//#endregion
+
+//#region
+function buscarElemento(arr, elemento) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === elemento) {
+        return true;  // Si el elemento se encuentra en el arreglo, devuelve true
+      }
+    }
+    return false;  // Si el elemento no se encuentra, devuelve false
+  }
+  
+  const arreglo = [1, 2, 3, 4, 5];
+  console.log(buscarElemento(arreglo, 3));  // true
+  console.log(buscarElemento(arreglo, 5)); 
 
 //#endregion
