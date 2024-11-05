@@ -255,16 +255,103 @@ console.log(crearUsuario("Papa", 32));
 
 //#region
 function buscarElemento(arr, elemento) {
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i] === elemento) {
-        return true;  // Si el elemento se encuentra en el arreglo, devuelve true
-      }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === elemento) {
+      return true; // Si el elemento se encuentra en el arreglo, devuelve true
     }
-    return false;  // Si el elemento no se encuentra, devuelve false
   }
-  
-  const arreglo = [1, 2, 3, 4, 5];
-  console.log(buscarElemento(arreglo, 3));  // true
-  console.log(buscarElemento(arreglo, 5)); 
+  return false; // Si el elemento no se encuentra, devuelve false
+}
 
+const arreglo = [1, 2, 3, 4, 5];
+console.log(buscarElemento(arreglo, 3)); // true
+console.log(buscarElemento(arreglo, 5));
+
+//#endregion
+
+//#region Declaración de una variable: Crea una variable llamada edad y asígnale el valor 25.
+let edad = 25;
+console.log(edad);
+//#endregion
+
+//#region Asignación de una constante: Declara una constante llamada PI y asígnale el valor 3.1416.
+const PI = 3.1416;
+console.log(PI);
+//#endregion
+
+//#region Suma de enteros: Declara dos variables a y b, asígnales los valores 5 y 10, respectivamente, y muestra el resultado de su suma.
+
+let a = 5;
+let b = 10;
+
+let resultadoSuma = a + b;
+console.log(resultadoSuma);
+
+//#endregion
+
+//#region Concatenación de cadenas: Declara dos variables nombre y apellido, asignales los valores "Juan" y "Pérez", y muestra su concatenación.
+
+let nombr = "francisco";
+let lastname = "bravo";
+console.log(nombr + " " + lastname);
+
+//#endregion
+
+//#region Operación con flotantes: Declara dos variables x y y como números decimales (float) y muestra el resultado de su división.
+let x = 1.0;
+let y = 5.0;
+let resultadoDivision = x / y;
+console.log(resultadoDivision);
+//#endregion
+
+//#region Cambio de valor de variable: Declara una variable temperatura con un valor inicial de 20, luego cambia su valor a 25.
+let temperatura = 20;
+temperatura = 25;
+
+console.log(temperatura);
+//#endregion
+
+//#region Operaciones con booleanos: Declara dos variables booleanas isStudent y isEmployee y asignales los valores true y false, respectivamente. Muestra el resultado de isStudent && isEmployee.
+let isStudent = true;
+let isEmployee = false;
+
+console.log(isStudent);
+console.log(isEmployee);
+//#endregion
+
+//#region Verificación de paridad: Declara una variable numero y asignale un valor cualquiera. Verifica si es par o impar usando el operador módulo.
+
+let numbers = 88;
+if (numbers % 2 === 0) {
+  console.log("es par");
+} else {
+  console.log("no es par");
+}
+//#endregion
+
+//#region Longitud de una cadena: Declara una variable frase y asignale un valor de tu elección. Muestra la longitud de esa cadena usando un método adecuado.
+let frase = "anita lava la loza";
+console.log(frase.length);
+//#endregion
+
+//#region Condicional con booleanos: Declara una variable isRaining con el valor true. Usa un if para mostrar "Llevar paraguas" si isRaining es verdadero.
+
+let IsRaining = false;
+if (IsRaining) {
+  console.log("llevar paragua");
+} else {
+  console.log("no va a lluver estara bonito");
+}
+//#endregion
+
+//#region  Multiplicación de enteros: Declara dos variables a y b con los valores 7 y 3, respectivamente. Muestra el resultado de su multiplicación.
+
+let a1 = 7;
+let a2 = 3;
+let resultadoMultiplicacion = a1 * a2;
+console.log(resultadoMultiplicacion);
+//#endregion
+
+//#region Suma de flotantes: Declara dos variables x y y con valores decimales y muestra la suma de ambas.
+let 
 //#endregion
