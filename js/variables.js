@@ -168,3 +168,58 @@ const filtrar = filtrarPares([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 console.log(filtrar);
 
 //#endregion
+
+//#region
+function EncontrarMayorYContarMayores(arrMayor, valor) {
+  let acumadorMayor = arrMayor[0]; // Inicializamos el mayor con el primer valor
+  let contador = 0; // Inicializamos el contador
+
+  // Recorremos el arreglo
+  for (let i = 0; i < arrMayor.length; i++) {
+    // Encontramos el mayor número
+    if (arrMayor[i] > acumadorMayor) {
+      acumadorMayor = arrMayor[i];
+    }
+
+    // Contamos cuántos números son mayores que el valor especificado
+    if (arrMayor[i] > valor) {
+      contador++;
+    }
+  }
+
+  // Retornamos el mayor número y el contador de números mayores que el valor
+  return {
+    mayor: acumadorMayor,
+    cantidadMayoresQueValor: contador,
+  };
+}
+
+// Llamamos a la función con el arreglo y el valor para comparar
+const resultador = EncontrarMayorYContarMayores(
+  [11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  5
+);
+
+console.log("El mayor número es:", resultador.mayor); // Imprime el mayor número
+console.log(
+  "Cantidad de números mayores que 5:",
+  resultador.cantidadMayoresQueValor
+); // Imprime la cantidad de números mayores que 5
+//#endregion
+
+//#region Palindromo
+function Palindromo(str) {
+  //1.-normalizar convertir minuscula y eliminar  espacio vacio
+  let normalizar = str.toLowerCase().replace(/\s/g, "");
+
+  //2.-invertir la cadena
+  let invertir = normalizar.split("").reverse().join("");
+
+  //3.- comprar la cadena normalizada con la invertida
+  return normalizar === invertir;
+}
+// const resultadoPalindromo = Palindromo("Anita lava la tina");
+console.log(Palindromo("Anita lava la tina"));
+console.log(Palindromo("Hola Mundo"));
+
+//#endregion
