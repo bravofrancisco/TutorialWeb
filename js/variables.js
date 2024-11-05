@@ -353,5 +353,24 @@ console.log(resultadoMultiplicacion);
 //#endregion
 
 //#region Suma de flotantes: Declara dos variables x y y con valores decimales y muestra la suma de ambas.
-let 
+let flo1 = 9.0;
+let flo2 = 8.0;
+let sumadecimal = flo1 + flo2;
+console.log(sumadecimal);
+
 //#endregion
+
+//#region Operación con cadenas: Declara una variable nombre y otra variable saludo. Asigna "Hola " a saludo y tu nombre a nombre. Muestra la concatenación de ambas.
+let name2 = "francisco";
+let saludo = "Hola";
+console.log(`${saludo} ${nombre}`);
+//#endregion
+
+//#region
+let numerstr = "10";
+numerstr = 10;
+console.log(typeof numerstr);
+
+//#endregion
+
+
