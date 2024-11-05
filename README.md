@@ -42,3 +42,7 @@ Consola del Navegador: Depuración y pruebas rápidas de código.
 12. Buenas Prácticas
 Estilo de Código: Consistencia en la escritura, uso de convenciones como camelCase.
 Documentación: Comentar el código y mantener documentación clara.
+
+logica de progracion utilizando los tipos de datos 100 ejercicicos
+basico , intermedio, difcil , muy dificil
+
