@@ -373,4 +373,47 @@ console.log(typeof numerstr);
 
 //#endregion
 
+//#region
+let str1 = "hola";
+let str2 = "hola";
+if (str1 === str2) {
+  console.log("son iguales");
+} else {
+  console.log("no son iguales");
+}
+//#endregion
 
+//#region Incremento de valor: Declara una variable contador con el valor 0 y usa un incremento para sumarle 1 cinco veces, mostrando el valor de contador al final.
+let contador = 0;
+for (let i = 0; i < 15; i++) {
+  contador++;
+}
+console.log(contador);
+
+//#endregion
+
+//#region Restar dos números: Declara dos variables de tipo entero y realiza una resta entre ellas.
+let nu1 = 91;
+let nu2 = 10;
+let res = nu1 - nu2;
+console.log(res);
+//#endregion
+
+//#region Verificación de número positivo o negativo: Declara una variable numero y muestra si es positivo o negativo.
+
+let numb = 10; // Declaramos la variable 'numb'
+
+if (numb > 0) {
+  console.log("es valor positivo"); // Si numb es mayor que 0, es positivo
+} else if (numb < 0) {
+  console.log("es negativo"); // Si numb es menor que 0, es negativo
+} else {
+  console.log("es neutro"); // Si numb es igual a 0, es cero
+}
+//#endregion
+
+//#region Incrementar una variable en un ciclo: Usa un ciclo for para incrementar una variable i de 1 a 10 y muestra el resultado.
+for (let i = 1; i <=10; i++) {
+  console.log("valor", i);
+}
+//#endregion
