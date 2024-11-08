@@ -116,5 +116,27 @@ if (clasificarNumero > 0) {
   console.log("Es cero");
 }
 
+/**
+ * Ejercicio 11: Calificación de examen Escribe un programa que reciba una calificación (número entre 0 y 100) y determine en qué rango de calificación cae:
 
-/** */
+90 a 100: "A"
+80 a 89: "B"
+70 a 79: "C"
+60 a 69: "D"
+Menor a 60: "F"
+
+ */
+let clasificacionExamen = 5;  // Cambia este valor para probar otras calificaciones
+
+if (clasificacionExamen >= 90 && clasificacionExamen <= 100) {
+  console.log("A");
+} else if (clasificacionExamen >= 80 && clasificacionExamen <= 89) {
+  console.log("B");
+} else if (clasificacionExamen >= 70 && clasificacionExamen <= 79) {
+  console.log("C");
+} else if (clasificacionExamen >= 60 && clasificacionExamen <= 69) {
+  console.log("D");
+} else {
+  console.log("F");
+}
+
