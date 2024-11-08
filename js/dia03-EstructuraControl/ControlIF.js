@@ -126,7 +126,7 @@ if (clasificarNumero > 0) {
 Menor a 60: "F"
 
  */
-let clasificacionExamen = 5;  // Cambia este valor para probar otras calificaciones
+let clasificacionExamen = 5; // Cambia este valor para probar otras calificaciones
 
 if (clasificacionExamen >= 90 && clasificacionExamen <= 100) {
   console.log("A");
@@ -140,3 +140,81 @@ if (clasificacionExamen >= 90 && clasificacionExamen <= 100) {
   console.log("F");
 }
 
+/**
+ * Ejercicio 12: Comparar dos números Crea un programa que reciba dos números y determine si son iguales, o si el primero es mayor o menor que el segundo. Muestra un mensaje correspondiente como: "Los números son iguales", "El primero es mayor", o "El segundo es mayor".
+ */
+// Solicitar la entrada del usuario con prompt y convertirla a número
+let primerNumero = parseInt(prompt("Ingrese el primer número"));
+let segundoNumero = parseInt(prompt("Ingrese el segundo número"));
+
+if (primerNumero === segundoNumero) {
+  console.log("Los números son iguales");
+} else if (primerNumero > segundoNumero) {
+  console.log("El primer número es mayor:", primerNumero);
+} else {
+  console.log("El segundo número es mayor:", segundoNumero);
+}
+
+/**
+ * Ejercicio 13: Verificación de año bisiesto Crea un programa que reciba un año y determine si es bisiesto. Un año es bisiesto si es divisible por 4, pero no por 100, a menos que también sea divisible por 400.
+ */
+let anoBiciesto = 1992;
+
+if (
+  (anoBiciesto % 4 === 0 && anoBiciesto % 100 !== 0) ||
+  anoBiciesto % 400 === 0
+) {
+  console.log("Es un año bisiesto");
+} else {
+  console.log("No es un año bisiesto");
+}
+
+/**
+ * Ejercicio 14: Verificar si un año es múltiplo de 5 y 7 Crea un programa que reciba un año y verifique si es múltiplo de 5 y 7. Si lo es, imprime "El año es múltiplo de 5 y 7", si no, "No es múltiplo de 5 y 7"
+ */
+
+let ano = 1992;
+if (ano % 5 === 0 && ano % 7 === 0) {
+  console.log("es multiplo de 5 y 7");
+} else {
+  console.log("no es multiplo de 5 y 7");
+}
+
+/**
+ * Ejercicio 18: Contraseña de acceso Crea un programa que pida una contraseña y verifique si es correcta. La contraseña correcta es "secreta". Si la contraseña es correcta, imprime "Acceso concedido", si no, "Acceso denegado".
+ */
+let contrasena = prompt("Ingrese contrasena");
+if (contrasena === "secreta") {
+  console.log("tienes acceso");
+} else {
+  console.log("No tienes acceso");
+}
+
+/**
+ * Ejercicio 19: Comparar tres números Escribe un programa que reciba tres números y determine si son todos iguales, si todos son diferentes, o si hay dos iguales. Muestra un mensaje correspondiente.
+ */
+let num1 = parseInt(prompt("Ingrese el primer número"));
+let num2 = parseInt(prompt("Ingrese el segundo número"));
+let num3 = parseInt(prompt("Ingrese el tercer número"));
+
+if (num1 === num2 && num2 === num3) {
+  console.log("Todos los números son iguales");
+} else if (num1 !== num2 && num2 !== num3 && num1 !== num3) {
+  console.log("Todos los números son diferentes");
+} else {
+  console.log("Hay dos números iguales");
+}
+
+/**
+ * Ejercicio 20: Verificar el rango de edad para un descuento Crea un programa que reciba la edad de una persona y determine si tiene derecho a un descuento en un cine:
+
+Si la persona tiene menos de 12 años o más de 65 años, recibe un descuento.
+Si no, no tiene descuento. Muestra un mensaje adecuado.
+ */
+
+let descuentoCine = 12;
+if (descuentoCine > 12 && descuentoCine <= 65) {
+  console.log("Tiene descuento");
+} else {
+  console.log("no tiene descuento");
+}
