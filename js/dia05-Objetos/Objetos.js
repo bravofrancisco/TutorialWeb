@@ -20,3 +20,18 @@ person2.firstName = "lucas";
 
 //display data
 document.getElementById("demo2").innerHTML = person2.firstName;
+
+const persona = {
+  nombre: "Carlos", // Propiedad: nombre
+  edad: 30, // Propiedad: edad
+  saludo: function () {
+    // Método: saludo
+    console.log("Hola, mi nombre es " + this.nombre);
+  },
+};
+console.log(persona["edad"]);
+
+//modificar propiedades de un objetos
+persona.edad = 32;
+console.log(persona.edad);
+
