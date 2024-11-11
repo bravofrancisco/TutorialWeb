@@ -35,3 +35,35 @@ console.log(persona["edad"]);
 persona.edad = 32;
 console.log(persona.edad);
 
+//agregar una nueva propiedad a un objetos
+persona.ocupacion = "Desarrollador";
+console.log(persona.ocupacion);
+
+//llamar a un metodo dentro del objeto
+persona.saludo();
+//Inicio del nuevo objetos
+
+const auto = {
+  marca: "Toyota",
+  modelo: "Corolla",
+  año: 2022,
+  mostrarDetalles: function () {
+    console.log(this.marca + " " + this.modelo + " " + this.año);
+  },
+};
+auto.mostrarDetalles(); // Resultado: "Toyota Corolla 2022"
+
+//fin del objetos
+
+const PersonaPropiedad = {
+  nombre: "Ana",
+  edad: 32,
+  cuidad2: "Valdivia",
+  saludo2: function () {
+    console.log(
+      `Hola, mi nombre es ${this.nombre}, tengo ${this.edad} años y vivo en ${this.cuidad2rr2.}.`
+    );
+  },
+};
+PersonaPropiedad.saludo2();
+
