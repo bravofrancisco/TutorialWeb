@@ -61,9 +61,20 @@ const PersonaPropiedad = {
   cuidad2: "Valdivia",
   saludo2: function () {
     console.log(
-      `Hola, mi nombre es ${this.nombre}, tengo ${this.edad} años y vivo en ${this.cuidad2rr2.}.`
+      `Hola, mi nombre es ${this.nombre}, tengo ${this.edad} años y vivo en ${this.cuidad2}`
     );
   },
 };
 PersonaPropiedad.saludo2();
 
+/**
+ * Ejercicio: Gestión de biblioteca
+Imagina que estás creando un sistema para gestionar una pequeña biblioteca. Cada libro tiene un título, un autor, un año de publicación y un estado (si está disponible o prestado). Debes crear un objeto para representar cada libro, así como un sistema para administrar la disponibilidad de los libros.
+ * */
+
+const GestionBibloteca = {
+  titulo: "Hola mundo",
+  autor: "nicolas schurman",
+  año: 1992,
+  estado: [disponible, prestado],
+};
