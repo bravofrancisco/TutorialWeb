@@ -212,7 +212,7 @@ Objetivo: Escribe una función que cree un arreglo con los números del 1 al 100
 
 function createArray() {
   let creaArray = [];
-  for (let i = 1; i <=100; i++) {
+  for (let i = 1; i <= 100; i++) {
     creaArray.push(i);
   }
   return creaArray;
@@ -220,5 +220,165 @@ function createArray() {
 console.log(createArray());
 
 /**
- * 
+ * 5. Sumar solo los números impares de un arreglo
+Objetivo: Escribe una función que sume solo los números impares de un arreglo de números.
  */
+function isUnique(ar) {
+  return new Set(ar).size === ar.length;
+}
+console.log(isUnique([1, 2, , 4, 3, 4, 5]));
+
+/**
+ * . Encontrar los números comunes en dos arreglos
+Objetivo: Escribe una función que reciba dos arreglos y devuelva un nuevo arreglo con los elementos comunes entre ambos.
+ */
+function commonElements(ar1, ar2) {
+  return ar1.filter((value) => ar2.includes(value));
+}
+
+console.log(commonElements([1, 2, 3, 4, 5], [4, 5, 6, 7, 8])); // Debería imprimir [4, 5]
+
+/**
+ * 8. Contar cuántas veces se repite un número en un arreglo
+Objetivo: Escribe una función que cuente cuántas veces un número específico aparece en un arreglo.
+ */
+function countOccurrences(arr, num) {
+  return arr.filter((item) => item === num).length;
+}
+
+/**
+ * 9. Aplanar un arreglo de arreglos
+Objetivo: Escribe una función que reciba un arreglo de arreglos y devuelva un solo arreglo con todos los elementos aplanados.
+
+Pistas: Usa .reduce() o .concat() para combinar los sub-arreglos.
+ */
+function flattenArray(arr) {
+  return arr.reduce((acc, val) => acc.concat(val), []);
+}
+
+/**
+ * 10. Eliminar todos los valores falsy en un arreglo
+Objetivo: Escribe una función que elimine todos los valores "falsy" (por ejemplo, false, 0, "", null, undefined, NaN) de un arreglo.
+ */
+function removeFalsyValues(arr) {
+  return arr.filter(Boolean);
+}
+
+/**
+ * 11. Crear un arreglo de la longitud de un número
+Objetivo: Escribe una función que reciba un número entero n y cree un arreglo con n elementos, donde cada elemento sea el mismo número.
+ */
+
+function createArrayFromNumber(n) {
+  return Array(n).fill(n);
+}
+
+/**
+ * 12. Rotar un arreglo a la izquierda
+Objetivo: Escribe una función que reciba un arreglo y lo rote una posición a la izquierda. El primer elemento debe ir al final del arreglo.
+ */
+function rotateLeft(arr) {
+  let first = arr.shift();
+  arr.push(first);
+  return arr;
+}
+
+/**
+ * 13. Verificar si un arreglo contiene números consecutivos
+Objetivo: Escribe una función que verifique si un arreglo contiene números consecutivos.
+
+Pistas: Si el arreglo está ordenado, la diferencia entre cada número consecutivo será 1.
+ */
+function isConsecutive(arr) {
+  arr.sort((a, b) => a - b); // Asegúrate de ordenar el arreglo primero
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] !== arr[i - 1] + 1) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * 14. Generar un arreglo de números aleatorios únicos
+Objetivo: Escribe una función que genere un arreglo con n números aleatorios únicos entre 1 y 100.
+ */
+function generateUniqueRandomNumbers(n) {
+  let arr = [];
+  while (arr.length < n) {
+    let randomNum = Math.floor(Math.random() * 100) + 1;
+    if (!arr.includes(randomNum)) {
+      arr.push(randomNum);
+    }
+  }
+  return arr;
+}
+
+/**
+ * 15. Ordenar un arreglo de números de menor a mayor
+Objetivo: Escribe una función que ordene un arreglo de números en orden ascendente.
+ */
+function sortArray(arr) {
+  return arr.sort((a, b) => a - b);
+}
+
+/**
+ * 16. Crear un arreglo con los primeros n números de Fibonacci
+Objetivo: Escribe una función que devuelva los primeros n números de la secuencia de Fibonacci.
+ */
+function fibonacci(n) {
+  let arr = [0, 1];
+  for (let i = 2; i < n; i++) {
+    arr.push(arr[i - 1] + arr[i - 2]);
+  }
+  return arr;
+}
+
+/**
+ * 17. Encontrar los elementos únicos en un arreglo
+Objetivo: Escribe una función que reciba un arreglo con algunos elementos repetidos y devuelva un arreglo con los elementos únicos.
+ */
+function uniqueElements(arr) {
+  return [...new Set(arr)];
+}
+
+/**
+ * 18. Sumar los elementos de un arreglo de objetos
+Objetivo: Escribe una función que reciba un arreglo de objetos donde cada objeto tiene una propiedad amount y sume todos los valores de esa propiedad.
+ */
+function sumAmounts(arr) {
+  return arr.reduce((acc, obj) => acc + obj.amount, 0);
+}
+
+/**
+ * 19. Crear una matriz de adyacencia de un grafo
+Objetivo: Escribe una función que reciba una lista de relaciones entre nodos y cree una matriz de adyacencia.
+ */
+function createAdjacencyMatrix(edges, numNodes) {
+  let matrix = Array(numNodes)
+    .fill()
+    .map(() => Array(numNodes).fill(0));
+  for (let [start, end] of edges) {
+    matrix[start][end] = 1;
+    matrix[end][start] = 1; // Si es un grafo no dirigido
+  }
+  return matrix;
+}
+
+/**
+ * 20. Encontrar el elemento más frecuente en un arreglo
+Objetivo: Escribe una función que encuentre el elemento que más veces aparece en un arreglo.
+ */
+function mostFrequentElement(arr) {
+  let frequency = {};
+  let maxCount = 0;
+  let mostFrequent = null;
+  for (let elem of arr) {
+    frequency[elem] = (frequency[elem] || 0) + 1;
+    if (frequency[elem] > maxCount) {
+      maxCount = frequency[elem];
+      mostFrequent = elem;
+    }
+  }
+  return mostFrequent;
+}

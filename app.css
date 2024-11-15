@@ -1,334 +1,125 @@
-/* Reset de márgenes y paddings */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Estilos básicos de cuerpo */
+/* Estilos generales */
 body {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
-    font-size: 16px;
-}
-
-/* Header */
-header {
-    background-color: #2f3b42;
-    color: white;
-    padding: 20px 30px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header .logo h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #f9c74f;
-}
-
-header .menu {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-header .menu li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-header .menu li a:hover {
-    color: #f9c74f;
-}
-
-/* Menú hamburguesa */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.menu-toggle .bar {
-    width: 25px;
-    height: 4px;
-    background-color: #fff;
-    margin: 4px 0;
-}
-
-/* Hero Section con Parallax */
-.hero {
-    background-image: url('https://via.placeholder.com/1200x600'); /* Imagen de fondo */
-    background-size: cover;
-    background-attachment: fixed; /* Parallax effect */
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 150px 20px;
-}
-
-.hero-text h2 {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
-.hero-text p {
-    font-size: 1.2rem;
-    font-weight: 300;
-    margin-bottom: 30px;
-}
-
-.hero .btn {
-    padding: 15px 30px;
-    background-color: #f9c74f;
-    color: #2f3b42;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-}
-
-.hero .btn:hover {
-    background-color: #f08d49;
-    transform: translateY(-4px);
-}
-
-/* Productos */
-.productos {
-    padding: 60px 50px;
-    text-align: center;
-    background-color: #ffffff;
-}
-
-.productos h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    color: #333;
-}
-
-.product-card {
-    display: inline-block;
-    width: 30%;
-    margin: 20px;
-    padding: 25px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-}
-
-.product-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-}
-
-.product-card h3 {
-    font-size: 1.8rem;
-    margin: 20px 0;
-}
-
-.product-card p {
-    font-size: 1rem;
-    color: #777;
-    margin-bottom: 20px;
-}
-
-.product-card .btn {
-    background-color: #2f3b42;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.product-card .btn:hover {
-    background-color: #f9c74f;
-    transform: translateY(-3px);
-}
-
-/* Botón Regresar Arriba */
-.scroll-to-top {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #4caf50; /* Fondo verde */
-    color: white;
-    padding: 18px; /* Tamaño redondo */
-    border-radius: 50%; /* Asegura que el botón sea redondo */
-    font-size: 2rem; /* Tamaño de la flecha */
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* Efecto hover para el botón */
-.scroll-to-top:hover {
-    background-color: #45a049;
-    transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* Efecto al hacer clic */
-.scroll-to-top:active {
-    transform: translateY(-4px);
-}
-
-/* Flecha usando Font Awesome */
-.scroll-to-top i {
-    font-size: 2.5rem; /* Tamaño del icono */
-    font-weight: 600;
-}
-
-
-/* Media Queries */
-@media (max-width: 768px) {
-    header .menu {
-        display: none;
-    }
-
-    header .menu-toggle {
-        display: flex;
-    }
-
-    header .menu.show {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .product-card {
-        width: 100%;
-        margin: 20px 0;
-    }
-
-    .hero-text h2 {
-        font-size: 2.5rem;
-    }
-
-    .hero-text p {
-        font-size: 1.2rem;
-    }
-
-    .productos h2 {
-        font-size: 2rem;
-    }
-}
-/* Estilo del formulario de contacto */
-.contacto {
-    padding: 60px 50px;
-    background-color: #ffffff;
-    text-align: center;
-}
-
-.contacto h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    color: #333;
-}
-
-.contacto form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.contacto input,
-.contacto textarea {
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    border: 2px solid #ddd;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .todo-container {
+    background-color: #fff;
+    padding: 20px;
     border-radius: 8px;
-    font-size: 1rem;
-    color: #333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contacto input:focus,
-.contacto textarea:focus {
-    border-color: #f9c74f;
-    box-shadow: 0 0 5px rgba(249, 199, 79, 0.5);
-    outline: none;
-}
-
-.contacto textarea {
-    height: 150px;
-    resize: vertical;
-}
-
-.contacto button {
-    width: 100%;
-    padding: 15px;
-    background-color: #2f3b42;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"] {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 10px;
+    width: 80%;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
+    border-radius: 4px;
     cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     transition: all 0.3s ease;
-}
-
-.contacto button:hover {
-    background-color: #f9c74f;
-    transform: translateY(-4px);
-}
-
-/* Estilo para el formulario en dispositivos móviles */
-@media (max-width: 768px) {
-    .contacto form {
-        padding: 30px;
+  }
+  
+  li button {
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  li button:hover {
+    background-color: #c0392b;
+  }
+  
+  li.completed {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  #no-tasks-message {
+    color: #777;
+    font-size: 14px;
+  }
+  
+  .filters {
+    margin-top: 15px;
+  }
+  
+  .filters button {
+    background-color: #ddd;
+    margin: 0 5px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .filters button:hover {
+    background-color: #ccc;
+  }
+  
+  li.added {
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+  }
+  
+  li.removed {
+    opacity: 1;
+    animation: fadeOut 0.3s forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
     }
-
-    .contacto input,
-    .contacto textarea {
-        padding: 12px;
-        font-size: 1.1rem;
+  }
+  
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
     }
-
-    .contacto button {
-        padding: 15px;
-        font-size: 1.2rem;
-    }
-}
+  }
+  

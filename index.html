@@ -8,84 +8,34 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
     <title>App - 2024</title>
   </head>
   <body>
-    <!-- <h1>Hello Wolrd</h1>
-    <p id="demo"></p>
-    <p id="demo2"></p> -->
-    <!-- Barra de navegación -->
-    <header>
-      <nav>
-        <div class="logo">
-          <h1>Tienda Verde</h1>
-        </div>
-        <div class="menu-toggle" id="mobile-menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-        <ul class="menu">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Productos</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="todo-container">
+      <h1>Lista de Tareas</h1>
+      <input type="text" id="task-input" placeholder="Escribe una tarea..." />
+      <button id="add-task-btn">Agregar tarea</button>
 
-    <!-- Sección Hero con Parallax -->
-    <section class="hero">
-      <div class="hero-text">
-        <h2>Bienvenidos a Tienda Verde</h2>
-        <p>Encuentra las mejores plantas para tu hogar</p>
-        <a href="#" class="btn">Explorar</a>
+      <div class="filters">
+        <button id="filter-all">Todas</button>
+        <button id="filter-completed">Completadas</button>
+        <button id="filter-pending">Pendientes</button>
       </div>
-    </section>
 
-    <!-- Productos -->
-    <section class="productos">
-      <h2>Productos Destacados</h2>
-      <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Planta 1" />
-        <h3>Planta 1</h3>
-        <p>Descripción breve de la planta.</p>
-        <a href="#" class="btn">Ver Más</a>
-      </div>
-      <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Planta 2" />
-        <h3>Planta 2</h3>
-        <p>Descripción breve de la planta.</p>
-        <a href="#" class="btn">Ver Más</a>
-      </div>
-      <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Planta 3" />
-        <h3>Planta 3</h3>
-        <p>Descripción breve de la planta.</p>
-        <a href="#" class="btn">Ver Más</a>
-      </div>
-    </section>
+      <ul id="task-list">
+        <!-- Las tareas se agregarán aquí -->
+      </ul>
 
-    <!-- Botón "Regresar Arriba" -->
-    <button class="scroll-to-top" id="scroll-top-btn">
-      <i class="fas fa-arrow-up"></i> <!-- Flecha hacia arriba de Font Awesome -->
-    </button>
-
-    <!-- Contacto -->
-    <section class="contacto">
-      <h2>Contacto</h2>
-      <form action="#">
-        <input type="text" placeholder="Tu nombre" required />
-        <input type="email" placeholder="Tu correo" required />
-        <textarea placeholder="Tu mensaje" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2024 Tienda Verde | Todos los derechos reservados.</p>
-    </footer>
+      <p id="no-tasks-message" style="display: none">
+        No hay tareas agregadas.
+      </p>
+    </div>
+<!-- Añadir un botón para cambiar entre tema claro y oscuro -->
+<button id="toggle-theme-btn">Modo Oscuro</button>
 
     <!-- <script src="app.js"></script> -->
     <!-- <script src="js/variables.js"></script> -->
@@ -101,7 +51,7 @@
     <script src="js/dia06-Arrays/Arrays.js"></script>
   </body>
 </html>
-<script>
+<!-- <script>
   // Mostrar y ocultar el botón "Volver Arriba"
   const scrollToTopBtn = document.getElementById("scroll-top-btn");
 
@@ -124,4 +74,146 @@
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("show");
   });
+</script> -->
+<script>
+  // Selección de elementos del DOM
+  const taskInput = document.getElementById("task-input");
+  const addTaskButton = document.getElementById("add-task-btn");
+  const taskList = document.getElementById("task-list");
+  const noTasksMessage = document.getElementById("no-tasks-message");
+
+  // Botones de filtro
+  const filterAllButton = document.getElementById("filter-all");
+  const filterCompletedButton = document.getElementById("filter-completed");
+  const filterPendingButton = document.getElementById("filter-pending");
+
+  // Cargar las tareas desde localStorage
+  function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.forEach((task) => {
+      createTaskElement(task.text, task.completed);
+    });
+    toggleNoTasksMessage(tasks.length === 0);
+  }
+
+  // Guardar las tareas en localStorage
+  function saveTasks() {
+    const tasks = [];
+    document.querySelectorAll("li").forEach((taskItem) => {
+      tasks.push({
+        text: taskItem.querySelector("span").textContent,
+        completed: taskItem.classList.contains("completed"),
+      });
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+
+  // Función para agregar una nueva tarea
+  function addTask() {
+    const taskText = taskInput.value.trim();
+    if (taskText === "") {
+      alert("Por favor, ingresa una tarea.");
+      return;
+    }
+
+    createTaskElement(taskText, false);
+    taskInput.value = ""; // Limpiar el campo de entrada
+    saveTasks(); // Guardar las tareas en localStorage
+    toggleNoTasksMessage(false);
+  }
+
+  // Función para crear un nuevo elemento de tarea
+  function createTaskElement(text, completed) {
+    const li = document.createElement("li");
+    li.classList.toggle("completed", completed);
+    li.classList.add("added"); // Animación al agregar
+
+    const taskText = document.createElement("span");
+    taskText.textContent = text;
+    taskText.addEventListener("click", () => toggleCompleteTask(li));
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Eliminar";
+    deleteButton.addEventListener("click", () => deleteTask(li));
+
+    const editButton = document.createElement("button");
+    editButton.textContent = "Editar";
+    editButton.addEventListener("click", () => editTask(li));
+
+    li.appendChild(taskText);
+    li.appendChild(editButton);
+    li.appendChild(deleteButton);
+
+    taskList.appendChild(li);
+  }
+
+  // Función para eliminar una tarea
+  function deleteTask(taskItem) {
+    taskItem.classList.add("removed"); // Animación al eliminar
+    setTimeout(() => {
+      taskItem.remove();
+      saveTasks(); // Guardar las tareas actualizadas
+      toggleNoTasksMessage(taskList.children.length === 0);
+    }, 300);
+  }
+
+  // Función para editar una tarea
+  function editTask(taskItem) {
+    const newText = prompt(
+      "Editar tarea:",
+      taskItem.querySelector("span").textContent
+    );
+    if (newText !== null && newText.trim() !== "") {
+      taskItem.querySelector("span").textContent = newText.trim();
+      saveTasks(); // Guardar las tareas actualizadas
+    }
+  }
+
+  // Función para marcar tarea como completada
+  function toggleCompleteTask(taskItem) {
+    taskItem.classList.toggle("completed");
+    saveTasks(); // Guardar las tareas actualizadas
+  }
+
+  // Función para mostrar u ocultar el mensaje cuando no hay tareas
+  function toggleNoTasksMessage(show) {
+    noTasksMessage.style.display = show ? "block" : "none";
+  }
+
+  // Filtros
+  filterAllButton.addEventListener("click", () => filterTasks("all"));
+  filterCompletedButton.addEventListener("click", () =>
+    filterTasks("completed")
+  );
+  filterPendingButton.addEventListener("click", () => filterTasks("pending"));
+
+  // Filtrar tareas según estado
+  function filterTasks(status) {
+    const tasks = document.querySelectorAll("li");
+    tasks.forEach((task) => {
+      const isCompleted = task.classList.contains("completed");
+      if (status === "all") {
+        task.style.display = "";
+      } else if (status === "completed" && isCompleted) {
+        task.style.display = "";
+      } else if (status === "pending" && !isCompleted) {
+        task.style.display = "";
+      } else {
+        task.style.display = "none";
+      }
+    });
+  }
+
+  // Evento para agregar tarea al hacer clic en el botón
+  addTaskButton.addEventListener("click", addTask);
+
+  // También agregar tarea presionando Enter
+  taskInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      addTask();
+    }
+  });
+
+  // Cargar las tareas al iniciar la página
+  loadTasks();
 </script>
