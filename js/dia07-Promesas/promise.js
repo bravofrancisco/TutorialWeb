@@ -304,3 +304,26 @@ getUser
   .catch((error) => {
     console.error(error);
   });
+
+/**
+ * Encadenamiento de promesas
+ * para manejar pasos consecutivos y cada uno pasa resultado siguiente
+ */
+let promesa = new Promise(function (resolve, reject) {
+  resolve(5);
+});
+promesa
+  .then(function (valor) {
+    console.log(valor);
+    return valor * 2;
+  })
+  .then(function (valor) {
+    console.log(valor);
+    return valor + 3;
+  })
+  .then(function (valor) {
+    console.log(valor);
+  })
+  .catch(function (error5) {
+    console.log("Hubo un error:", error5);
+  });
