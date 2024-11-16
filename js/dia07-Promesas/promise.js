@@ -327,3 +327,77 @@ promesa
   .catch(function (error5) {
     console.log("Hubo un error:", error5);
   });
+
+/**
+ * Practicas
+ */
+let promesa2 = new Promise((resolve, reject) => {
+  let exito = true;
+  if (exito) {
+    resolve("Operacion exitosa GPT");
+  } else {
+    reject("Hubo un error");
+  }
+});
+promesa2
+  .then((message6) => {
+    console.log(message6);
+  })
+  .catch((error6) => {
+    console.log(error6);
+  });
+
+let promesa3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    let exito = true;
+    if (exito) {
+      resolve("se resolvio");
+    } else {
+      reject("algo salio mal 24");
+    }
+  }, 2000);
+});
+promesa3
+  .then((message7) => {
+    console.log(message7);
+  })
+  .catch((error7) => {
+    console.log(error7);
+  });
+
+function esperarTresSegundo() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("3 segundos han pasados");
+    }, 3000);
+  });
+}
+async function Ejecutar() {
+  console.log("Esperando...");
+  let mensaje8 = await esperarTresSegundo();
+  console.log(mensaje8);
+}
+Ejecutar();
+
+let promesaFallida = new Promise((resolve, reject) => {
+  reject("promesa fallida desde ahora");
+});
+promesaFallida
+  .then((message9) => {
+    console.log(message9);
+  })
+  .catch((error9) => {
+    console.log(error9);
+  });
+
+//   async function Ejecutar() {
+//     console.log("Esperando...");
+//     let mensaje8 = await esperarTresSegundo();
+//     console.log(mensaje8);
+//   }
+//   Ejecutar();
+async function Ejecutar() {
+  console.log("esperando... codigo");
+  let mensaje10 = await Ejecutar();
+  console.log(mensaje10);
+}
