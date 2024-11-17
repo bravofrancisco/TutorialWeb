@@ -396,8 +396,8 @@ promesaFallida
 //     console.log(mensaje8);
 //   }
 //   Ejecutar();
-async function Ejecutar() {
-  console.log("esperando... codigo");
-  let mensaje10 = await Ejecutar();
-  console.log(mensaje10);
-}
+// async function Ejecutar() {
+//   console.log("esperando... codigo");
+//   let mensaje10 = await Ejecutar();
+//   console.log(mensaje10);
+// }
