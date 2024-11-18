@@ -53,3 +53,18 @@ boton4.addEventListener("click", () => {
   lista.removeChild(primerElementDelete);
   console.log(lista);
 });
+
+/**
+ * Ejercicio
+ *
+ */
+let botonCabiambiarColor = document.getElementById("btn-cambiar-fondo");
+const body = document.body;
+
+function cambiarFondo() {
+  const colorAleatorio = `#${Math.floor(Math.random() * 16777215).toString(
+    16
+  )}`;
+  body.style.backgroundColor = colorAleatorio;
+}
+botonCabiambiarColor.addEventListener("click", cambiarFondo);
