@@ -1,72 +1,216 @@
+/* RESET GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+  font-family: 'Inter', sans-serif; /* Tipografía moderna */
+  background-color: #f8f9fb; /* Fondo suave gris claro */
+  color: #4f5d73; /* Texto oscuro suave */
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  flex-direction: column;
+  gap: 40px;
 }
 
 h1, h2 {
-  color: #333;
+  color: #2a2e3d; /* Títulos oscuros pero sutiles */
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+/* Encabezado */
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: #616b7c; /* Color gris más suave */
+}
+
+/* Contenedor principal de la tabla y formulario */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tarjeta de Tabla */
+.table-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.table-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra al pasar el mouse */
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 1rem;
+  text-align: left;
   margin-top: 20px;
 }
 
-table, th, td {
-  border: 1px solid #ddd;
-}
-
 th, td {
-  padding: 12px;
+  padding: 12px 18px;
   text-align: left;
 }
 
 th {
-  background-color: #f4f4f4;
+  background-color: #4f5d73; /* Azul grisáceo suave */
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+td {
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+td:last-child {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #f5f7fa; /* Gris suave */
 }
 
-/* Estilo base para los botones */
-button {
-  background-color: #f0ad4e; 
-  color: white;
-  font-weight: bold;
-  padding: 5px 10px;
+tr:hover {
+  background-color: #f0f1f4; /* Gris pálido para hover */
   cursor: pointer;
-  border-radius: 5px;
-  border: none;
 }
 
-/* Botón de eliminar */
-button.eliminar-btn {
-  background-color: #f44336; /* Rojo */
+/* Formulario de Usuario */
+.form-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-card h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #4f5d73; /* Gris oscuro suave */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  background-color: #f9f9f9; /* Fondo muy suave */
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #4f5d73; /* Resalta en azul grisáceo */
+  background-color: #fff;
+  outline: none;
+}
+
+button {
+  padding: 14px 20px;
+  font-size: 1.1rem;
+  background-color: #4f5d73; /* Azul grisáceo */
   color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #3a4756; /* Azul más oscuro */
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button.eliminar-btn {
+  background-color: #e7a8b1; /* Rosa suave */
 }
 
 button.eliminar-btn:hover {
-  background-color: #d32f2f; /* Rojo oscuro */
+  background-color: #d18c97; /* Rosa más oscuro */
 }
 
-/* Botón de actualizar */
 button.actualizar-btn {
-  background-color: #f0ad4e; /* Naranja */
-  color: white;
+  background-color: #9fd0b4; /* Verde menta suave */
 }
 
 button.actualizar-btn:hover {
-  background-color: #ec971f; /* Naranja oscuro */
+  background-color: #81c39c; /* Verde menta más oscuro */
 }
 
-/* Separación entre los botones de acción */
-button {
-  margin-right: 10px; /* Añadir margen derecho entre los botones */
+/* Responsive */
+@media (max-width: 768px) {
+  .table-card, .form-card {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  input {
+    padding: 10px;
+  }
+
+  button {
+    padding: 12px 18px;
+  }
 }
 
-/* Agregar bordes redondeados */
-button {
-  border-radius: 5px;
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  input, button {
+    padding: 12px;
+  }
 }
