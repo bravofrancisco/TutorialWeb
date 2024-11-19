@@ -114,6 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // Obtener nuevamente la lista de usuarios tras eliminar uno
       obtenerUsuarios();
 
+      // Limpiar formulario después de la eliminación
+      formulario.reset();
+
       Swal.fire('Eliminado!', 'El usuario ha sido eliminado.', 'success');
     } catch (error) {
       console.error('Error al eliminar el usuario:', error);
@@ -138,6 +141,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const id = usuarioIdInput.value;
     const nombre = nombreInput.value;
     const correo = correoInput.value;
+
+    if (!id) {
+      return Swal.fire('Error', 'No se ha seleccionado un usuario para actualizar', 'error');
+    }
 
     const usuarioActualizado = { nombre, correo_electronico: correo };
 
