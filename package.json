@@ -1,0 +1,17 @@
+{
+  "name": "desarrolloweb",
+  "version": "1.0.0",
+  "description": "1. Sintaxis Básica\r Variables: Se utilizan var, let y const para declarar variables.\r Tipos de Datos: Números, cadenas de texto (strings), booleanos, objetos, arreglos, null, y undefined.\r 2. Operadores\r Aritméticos: +, -, *, /, %.\r Comparación: ==, ===, !=, !==, >, <, >=, <=.\r Lógicos: &&, ||, !.\r 3. Estructuras de Control\r Condicionales: if, else if, else, switch.\r Bucles: for, while, do while, forEach (en arreglos).\r 4. Funciones\r Declaración de Funciones: function nombreFunc() { ... }.\r Funciones Anónimas: const nombreFunc = function() { ... }.\r Funciones de Flecha: const nombreFunc = () => { ... }.\r Parámetros y Argumentos: Cómo pasar datos a las funciones.\r 5. Objetos y Arreglos\r Objetos: Crear y manipular objetos con propiedades y métodos.\r Arreglos: Crear, acceder y manipular arreglos; métodos como push, pop, map, filter, reduce.\r 6. Manipulación del DOM\r Seleccionar Elementos: document.getElementById, document.querySelector.\r Modificar Elementos: Cambiar contenido, estilos y atributos.\r Eventos: Agregar y manejar eventos (click, submit, etc.).\r 7. Programación Asincrónica\r Callbacks: Funciones que se pasan como argumentos.\r Promesas: Objetos que representan un valor que puede estar disponible ahora, o en el futuro.\r Async/Await: Sintaxis para trabajar con Promesas de manera más legible.\r 8. Módulos\r Exportar e Importar: Uso de export e import para modularizar el código.\r 9. Error Handling\r Try/Catch: Manejo de errores para evitar que el script se detenga.\r Errores Personalizados: Crear y lanzar errores personalizados.\r 10. Principios de Programación\r DRY (Don't Repeat Yourself): Evitar la repetición de código.\r KISS (Keep It Simple, Stupid): Mantener el código simple y claro.\r YAGNI (You Aren't Gonna Need It): No agregar funcionalidad que no se necesita.\r 11. Herramientas y Entornos\r Entornos de Desarrollo: Uso de editores como VSCode.\r Consola del Navegador: Depuración y pruebas rápidas de código.\r 12. Buenas Prácticas\r Estilo de Código: Consistencia en la escritura, uso de convenciones como camelCase.\r Documentación: Comentar el código y mantener documentación clara.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.4"
+  }
+}
