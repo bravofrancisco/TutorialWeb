@@ -32,6 +32,9 @@ tr:nth-child(even) {
 
 /* Estilo base para los botones */
 button {
+  background-color: #f0ad4e; 
+  color: white;
+  font-weight: bold;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 5px;
