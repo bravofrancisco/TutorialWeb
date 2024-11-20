@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Elementos del DOM
-  const tablaUsuarios = document.getElementById("tabla-usuarios").getElementsByTagName("tbody")[0];
+  const tablaUsuarios = document
+    .getElementById("tabla-usuarios")
+    .getElementsByTagName("tbody")[0];
   const formulario = document.getElementById("formulario-usuario");
   const nombreInput = document.getElementById("nombre");
   const correoInput = document.getElementById("correo");
@@ -11,10 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("auth_token");
 
   // Validación de correo electrónico
-  const validarCorreo = (correo) => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(correo);
+  const validarCorreo = (correo) =>
+    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(correo);
 
-  // Validación de nombre (mínimo 3 caracteres)
-  const validarNombre = (nombre) => nombre.length >= 3;
+  // Validación de nombre (mínimo 3 caracteres, solo letras y espacios)
+  const validarNombre = (nombre) => /^[a-zA-Z\s]{3,}$/.test(nombre);
 
   // Función para hacer peticiones HTTP genéricas
   const hacerPeticion = async (url, metodo, datos = null) => {
@@ -37,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) {
         try {
           const errorData = await response.json();
-          throw new Error(errorData.message || 'Error en la petición');
+          throw new Error(errorData.message || "Error en la petición");
         } catch (error) {
           throw new Error(`Error en la solicitud: ${response.statusText}`);
         }
@@ -53,16 +56,19 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error("Error en la solicitud:", error);
       Swal.fire({
-        title: 'Error',
+        title: "Error",
         text: error.message,
-        icon: 'error',
+        icon: "error",
       });
     }
   };
 
   // Función para obtener los usuarios
   const obtenerUsuarios = async () => {
-    const usuarios = await hacerPeticion("http://localhost:3000/usuarios", "GET");
+    const usuarios = await hacerPeticion(
+      "http://localhost:3000/usuarios",
+      "GET"
+    );
     if (!usuarios) return;
     tablaUsuarios.innerHTML = ""; // Limpiar la tabla antes de llenarla
 
@@ -73,8 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
       fila.insertCell(2).textContent = usuario.correo_electronico;
 
       const celdaAcciones = fila.insertCell(3);
-      const botonEliminar = crearBoton("Eliminar", "eliminar-btn", () => confirmarEliminacion(usuario.id));
-      const botonActualizar = crearBoton("Actualizar", "actualizar-btn", () => cargarDatosUsuario(usuario));
+      const botonEliminar = crearBoton("Eliminar", "eliminar-btn", () =>
+        confirmarEliminacion(usuario.id)
+      );
+      const botonActualizar = crearBoton("Actualizar", "actualizar-btn", () =>
+        cargarDatosUsuario(usuario)
+      );
 
       celdaAcciones.appendChild(botonEliminar);
       celdaAcciones.appendChild(botonActualizar);
@@ -94,8 +104,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const crearUsuario = async (e) => {
     e.preventDefault();
 
-    const nombre = nombreInput.value.trim();
-    const correo = correoInput.value.trim();
+    const nombre = nombreInput.value.trim().toLowerCase();
+    const correo = correoInput.value.trim().toLowerCase();
 
     if (!nombre || !correo) {
       return Swal.fire("Error", "Todos los campos son obligatorios.", "error");
@@ -106,7 +116,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (!validarNombre(nombre)) {
-      return Swal.fire("Error", "El nombre debe tener al menos 3 caracteres.", "error");
+      return Swal.fire(
+        "Error",
+        "El nombre debe tener al menos 3 caracteres y solo contener letras y espacios.",
+        "error"
+      );
     }
 
     const nuevoUsuario = { nombre, correo_electronico: correo };
@@ -136,7 +150,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Función para eliminar un usuario
   const eliminarUsuario = async (id) => {
-    const mensaje = await hacerPeticion(`http://localhost:3000/usuarios/${id}`, "DELETE");
+    const mensaje = await hacerPeticion(
+      `http://localhost:3000/usuarios/${id}`,
+      "DELETE"
+    );
     if (mensaje) {
       obtenerUsuarios();
       Swal.fire("Eliminado!", mensaje, "success");
@@ -169,11 +186,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (!validarNombre(nombre)) {
-      return Swal.fire("Error", "El nombre debe tener al menos 3 caracteres.", "error");
+      return Swal.fire(
+        "Error",
+        "El nombre debe tener al menos 3 caracteres y solo contener letras y espacios.",
+        "error"
+      );
     }
 
     const usuarioActualizado = { nombre, correo_electronico: correo };
-    const respuesta = await hacerPeticion(`http://localhost:3000/usuarios/${id}`, "PUT", usuarioActualizado);
+    const respuesta = await hacerPeticion(
+      `http://localhost:3000/usuarios/${id}`,
+      "PUT",
+      usuarioActualizado
+    );
 
     if (respuesta) {
       // Limpiar el formulario
