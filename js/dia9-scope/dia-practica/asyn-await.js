@@ -99,4 +99,77 @@ async function Comentary(id) {
     console.error("Error", error.message);
   }
 }
-Comentary(1);
+//Comentary(1);
+
+/**
+ * Ejercicio 5: Obtener datos de varias API
+ * Imagina que tienes que obtener información de dos APIs diferentes. Usa async/await y Promise.all() para obtener datos de ambas APIs en paralelo. La primera API puede ser de usuarios, como https://jsonplaceholder.typicode.com/users, y la segunda API puede ser de posts de perros, como https://dog.ceo/api/breeds/image/random.
+ */
+
+async function ObtemerApiDeDos() {
+  try {
+    const peticiones5 = await fetch(
+      "https://jsonplaceholder.typicode.com/users"
+    );
+
+    if (!peticiones5.ok) {
+      throw new Error(`Error en la solicitud: ${response.status}`);
+    }
+    const respuesta5 = await peticiones5.json();
+    // console.log(respuesta5);
+
+    respuesta5.forEach((usuarios) => {
+      console.log(`Nombre: ${usuarios.name}`);
+      console.log(`username: ${usuarios.username}`);
+    });
+
+    console.log("-----------------------");
+  } catch (error) {
+    console.error("error", error.message);
+  }
+}
+//ObtemerApiDeDos();
+
+async function ObtemerApiDeDos() {
+  try {
+    // Realizamos ambas solicitudes en paralelo usando Promise.all
+    const [usuariosResponse, perroResponse] = await Promise.all([
+      fetch("https://jsonplaceholder.typicode.com/users"),
+      fetch("https://dog.ceo/api/breeds/image/random"),
+    ]);
+
+    // Verificamos que ambas respuestas sean exitosas
+    if (!usuariosResponse.ok) {
+      throw new Error(
+        `Error en la solicitud de usuarios: ${usuariosResponse.status}`
+      );
+    }
+
+    if (!perroResponse.ok) {
+      throw new Error(
+        `Error en la solicitud de perros: ${perroResponse.status}`
+      );
+    }
+
+    // Obtenemos los datos de ambas respuestas en formato JSON
+    const usuarios = await usuariosResponse.json();
+    const perro = await perroResponse.json();
+
+    // Mostrar la información de los usuarios
+    console.log("Usuarios:");
+    usuarios.forEach((usuario) => {
+      console.log(`Nombre: ${usuario.name}`);
+      console.log(`Username: ${usuario.username}`);
+      console.log("-----------------------");
+    });
+
+    // Mostrar la imagen del perro
+    console.log("Imagen de perro:");
+    console.log(perro.message);
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+}
+
+// Llamamos a la función
+//ObtemerApiDeDos();
