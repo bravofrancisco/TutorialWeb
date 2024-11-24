@@ -173,3 +173,73 @@ async function ObtemerApiDeDos() {
 
 // Llamamos a la función
 //ObtemerApiDeDos();
+
+/**
+ * Usando la API https://dog.ceo/api/breeds/list/all, crea una función que reciba un nombre de raza de perro y devuelva un mensaje que indique si la raza existe o no. Si la raza existe, también muestra una imagen aleatoria de esa raza.
+ */
+
+// Función que recibe un nombre de raza y devuelve un mensaje con la existencia de la raza y una imagen aleatoria si existe
+// Función que recibe un nombre de raza y devuelve un mensaje con la existencia de la raza y una imagen aleatoria si existe
+async function obtenerRazaPerro(raza) {
+  const urlListaRazas = "https://dog.ceo/api/breeds/list/all";
+
+  try {
+    // Realizar la petición para obtener la lista de razas
+    const respuesta = await fetch(urlListaRazas);
+    const datos = await respuesta.json();
+
+    // Verificar si la raza existe en la lista de razas
+    if (datos.message[raza]) {
+      // Si existe, obtener una imagen aleatoria de esa raza
+      const imagenRespuesta = await fetch(
+        `https://dog.ceo/api/breed/${raza}/images/random`
+      );
+      const imagenDatos = await imagenRespuesta.json();
+
+      console.log(`La raza "${raza}" existe.`);
+      console.log(`Imagen aleatoria de la raza "${raza}":`);
+      console.log(imagenDatos.message);
+    } else {
+      // Si la raza no existe, mostrar mensaje
+      console.log(`La raza "${raza}" no existe.`);
+    }
+  } catch (error) {
+    console.error("Error al obtener los datos de la API:", error);
+  }
+}
+
+// Llamar a la función con un ejemplo de raza
+//obtenerRazaPerro('bulldxog'); // Cambia el nombre de la raza aquí
+
+/**
+ * cat facts
+ */
+async function obtenerCat() {
+    try {
+      const peticiones6 = await fetch(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+  
+      if (!peticiones6.ok) {
+        throw new Error("Error", peticiones6.status);
+      }
+      const respuesta6 = await peticiones6.json();
+  
+      const listaUsuarios = document.getElementById("listado-usuarios");
+  
+      // Limpiar la lista por si se vuelve a hacer la solicitud
+      listaUsuarios.innerHTML = "";
+  
+      // Recorrer la respuesta y agregar cada usuario a la lista
+      respuesta6.forEach((usuario) => {
+        const li = document.createElement("li");
+        li.innerHTML = `Nombre: ${usuario.name}<br> Email: ${usuario.email}`;
+        listaUsuarios.appendChild(li);
+      });
+    } catch (error) {
+      console.error("error", error.message);
+    }
+  }
+  
+  obtenerCat();
+  

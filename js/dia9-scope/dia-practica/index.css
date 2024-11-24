@@ -1,0 +1,66 @@
+/* Estilo global de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo para el encabezado */
+  h1 {
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+  }
+  
+  /* Estilo para la lista de usuarios */
+  #listado-usuarios {
+    margin: 20px auto;
+    padding: 0;
+    width: 80%;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  /* Estilo para cada item de usuario */
+  li {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Efecto hover para los items de usuario */
+  li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilo para la información del usuario */
+  .user-info {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    color: #00796b;
+  }
+  
+  .user-email {
+    color: #555;
+  }
+  
+  /* Estilos responsivos */
+  @media (max-width: 768px) {
+    #listado-usuarios {
+      grid-template-columns: 1fr;
+    }
+  }
+  
