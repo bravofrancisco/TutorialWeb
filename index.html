@@ -51,7 +51,15 @@
     <!-- <script src="js/dia05-Objetos/Objetos.js"></script> -->
     <!-- <script src="js/dia06-Arrays/Arrays.js"></script> -->
     <!-- <script src="js/dia07-Promesas/promise.js"></script> -->
-    <script src="js/dia08-DOM/DOM.js"></script>
+    <!-- <script src="js/dia08-DOM/DOM.js"></script> -->
+    <!-- <script src="js/dia9-scope/scope.js"></script> -->
+    <!-- <script src="js/dia9-scope/closure.js"></script> -->
+    <!-- <script src="js/dia9-scope/callback.js"></script> -->
+    <!-- <script src="js/dia9-scope/await.js"></script> -->
+    <!-- <script src="js/dia9-scope/aysn-await.js"></script> -->
+    <!-- <script src="js/dia9-scope/dia-practica/asyn-await.js"></script> -->
+    <!-- <script src="js/dia10-destrucracion/destructuracion.js"></script> -->
+    <script src="js/dia10-destrucracion/ejercicio.js"></script>
   </body>
 </html>
 <!-- <script>
@@ -80,143 +88,143 @@
 </script> -->
 <script>
   // Selección de elementos del DOM
-  const taskInput = document.getElementById("task-input");
-  const addTaskButton = document.getElementById("add-task-btn");
-  const taskList = document.getElementById("task-list");
-  const noTasksMessage = document.getElementById("no-tasks-message");
+  // const taskInput = document.getElementById("task-input");
+  // const addTaskButton = document.getElementById("add-task-btn");
+  // const taskList = document.getElementById("task-list");
+  // const noTasksMessage = document.getElementById("no-tasks-message");
 
-  // Botones de filtro
-  const filterAllButton = document.getElementById("filter-all");
-  const filterCompletedButton = document.getElementById("filter-completed");
-  const filterPendingButton = document.getElementById("filter-pending");
+  // // Botones de filtro
+  // const filterAllButton = document.getElementById("filter-all");
+  // const filterCompletedButton = document.getElementById("filter-completed");
+  // const filterPendingButton = document.getElementById("filter-pending");
 
-  // Cargar las tareas desde localStorage
-  function loadTasks() {
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.forEach((task) => {
-      createTaskElement(task.text, task.completed);
-    });
-    toggleNoTasksMessage(tasks.length === 0);
-  }
+  // // Cargar las tareas desde localStorage
+  // function loadTasks() {
+  //   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  //   tasks.forEach((task) => {
+  //     createTaskElement(task.text, task.completed);
+  //   });
+  //   toggleNoTasksMessage(tasks.length === 0);
+  // }
 
-  // Guardar las tareas en localStorage
-  function saveTasks() {
-    const tasks = [];
-    document.querySelectorAll("li").forEach((taskItem) => {
-      tasks.push({
-        text: taskItem.querySelector("span").textContent,
-        completed: taskItem.classList.contains("completed"),
-      });
-    });
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }
+  // // Guardar las tareas en localStorage
+  // function saveTasks() {
+  //   const tasks = [];
+  //   document.querySelectorAll("li").forEach((taskItem) => {
+  //     tasks.push({
+  //       text: taskItem.querySelector("span").textContent,
+  //       completed: taskItem.classList.contains("completed"),
+  //     });
+  //   });
+  //   localStorage.setItem("tasks", JSON.stringify(tasks));
+  // }
 
-  // Función para agregar una nueva tarea
-  function addTask() {
-    const taskText = taskInput.value.trim();
-    if (taskText === "") {
-      alert("Por favor, ingresa una tarea.");
-      return;
-    }
+  // // Función para agregar una nueva tarea
+  // function addTask() {
+  //   const taskText = taskInput.value.trim();
+  //   if (taskText === "") {
+  //     alert("Por favor, ingresa una tarea.");
+  //     return;
+  //   }
 
-    createTaskElement(taskText, false);
-    taskInput.value = ""; // Limpiar el campo de entrada
-    saveTasks(); // Guardar las tareas en localStorage
-    toggleNoTasksMessage(false);
-  }
+  //   createTaskElement(taskText, false);
+  //   taskInput.value = ""; // Limpiar el campo de entrada
+  //   saveTasks(); // Guardar las tareas en localStorage
+  //   toggleNoTasksMessage(false);
+  // }
 
-  // Función para crear un nuevo elemento de tarea
-  function createTaskElement(text, completed) {
-    const li = document.createElement("li");
-    li.classList.toggle("completed", completed);
-    li.classList.add("added"); // Animación al agregar
+  // // Función para crear un nuevo elemento de tarea
+  // function createTaskElement(text, completed) {
+  //   const li = document.createElement("li");
+  //   li.classList.toggle("completed", completed);
+  //   li.classList.add("added"); // Animación al agregar
 
-    const taskText = document.createElement("span");
-    taskText.textContent = text;
-    taskText.addEventListener("click", () => toggleCompleteTask(li));
+  //   const taskText = document.createElement("span");
+  //   taskText.textContent = text;
+  //   taskText.addEventListener("click", () => toggleCompleteTask(li));
 
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Eliminar";
-    deleteButton.addEventListener("click", () => deleteTask(li));
+  //   const deleteButton = document.createElement("button");
+  //   deleteButton.textContent = "Eliminar";
+  //   deleteButton.addEventListener("click", () => deleteTask(li));
 
-    const editButton = document.createElement("button");
-    editButton.textContent = "Editar";
-    editButton.addEventListener("click", () => editTask(li));
+  //   const editButton = document.createElement("button");
+  //   editButton.textContent = "Editar";
+  //   editButton.addEventListener("click", () => editTask(li));
 
-    li.appendChild(taskText);
-    li.appendChild(editButton);
-    li.appendChild(deleteButton);
+  //   li.appendChild(taskText);
+  //   li.appendChild(editButton);
+  //   li.appendChild(deleteButton);
 
-    taskList.appendChild(li);
-  }
+  //   taskList.appendChild(li);
+  // }
 
-  // Función para eliminar una tarea
-  function deleteTask(taskItem) {
-    taskItem.classList.add("removed"); // Animación al eliminar
-    setTimeout(() => {
-      taskItem.remove();
-      saveTasks(); // Guardar las tareas actualizadas
-      toggleNoTasksMessage(taskList.children.length === 0);
-    }, 300);
-  }
+  // // Función para eliminar una tarea
+  // function deleteTask(taskItem) {
+  //   taskItem.classList.add("removed"); // Animación al eliminar
+  //   setTimeout(() => {
+  //     taskItem.remove();
+  //     saveTasks(); // Guardar las tareas actualizadas
+  //     toggleNoTasksMessage(taskList.children.length === 0);
+  //   }, 300);
+  // }
 
-  // Función para editar una tarea
-  function editTask(taskItem) {
-    const newText = prompt(
-      "Editar tarea:",
-      taskItem.querySelector("span").textContent
-    );
-    if (newText !== null && newText.trim() !== "") {
-      taskItem.querySelector("span").textContent = newText.trim();
-      saveTasks(); // Guardar las tareas actualizadas
-    }
-  }
+  // // Función para editar una tarea
+  // function editTask(taskItem) {
+  //   const newText = prompt(
+  //     "Editar tarea:",
+  //     taskItem.querySelector("span").textContent
+  //   );
+  //   if (newText !== null && newText.trim() !== "") {
+  //     taskItem.querySelector("span").textContent = newText.trim();
+  //     saveTasks(); // Guardar las tareas actualizadas
+  //   }
+  // }
 
-  // Función para marcar tarea como completada
-  function toggleCompleteTask(taskItem) {
-    taskItem.classList.toggle("completed");
-    saveTasks(); // Guardar las tareas actualizadas
-  }
+  // // Función para marcar tarea como completada
+  // function toggleCompleteTask(taskItem) {
+  //   taskItem.classList.toggle("completed");
+  //   saveTasks(); // Guardar las tareas actualizadas
+  // }
 
-  // Función para mostrar u ocultar el mensaje cuando no hay tareas
-  function toggleNoTasksMessage(show) {
-    noTasksMessage.style.display = show ? "block" : "none";
-  }
+  // // Función para mostrar u ocultar el mensaje cuando no hay tareas
+  // function toggleNoTasksMessage(show) {
+  //   noTasksMessage.style.display = show ? "block" : "none";
+  // }
 
-  // Filtros
-  filterAllButton.addEventListener("click", () => filterTasks("all"));
-  filterCompletedButton.addEventListener("click", () =>
-    filterTasks("completed")
-  );
-  filterPendingButton.addEventListener("click", () => filterTasks("pending"));
+  // // Filtros
+  // filterAllButton.addEventListener("click", () => filterTasks("all"));
+  // filterCompletedButton.addEventListener("click", () =>
+  //   filterTasks("completed")
+  // );
+  // filterPendingButton.addEventListener("click", () => filterTasks("pending"));
 
-  // Filtrar tareas según estado
-  function filterTasks(status) {
-    const tasks = document.querySelectorAll("li");
-    tasks.forEach((task) => {
-      const isCompleted = task.classList.contains("completed");
-      if (status === "all") {
-        task.style.display = "";
-      } else if (status === "completed" && isCompleted) {
-        task.style.display = "";
-      } else if (status === "pending" && !isCompleted) {
-        task.style.display = "";
-      } else {
-        task.style.display = "none";
-      }
-    });
-  }
+  // // Filtrar tareas según estado
+  // function filterTasks(status) {
+  //   const tasks = document.querySelectorAll("li");
+  //   tasks.forEach((task) => {
+  //     const isCompleted = task.classList.contains("completed");
+  //     if (status === "all") {
+  //       task.style.display = "";
+  //     } else if (status === "completed" && isCompleted) {
+  //       task.style.display = "";
+  //     } else if (status === "pending" && !isCompleted) {
+  //       task.style.display = "";
+  //     } else {
+  //       task.style.display = "none";
+  //     }
+  //   });
+  // }
 
-  // Evento para agregar tarea al hacer clic en el botón
-  addTaskButton.addEventListener("click", addTask);
+  // // Evento para agregar tarea al hacer clic en el botón
+  // addTaskButton.addEventListener("click", addTask);
 
-  // También agregar tarea presionando Enter
-  taskInput.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      addTask();
-    }
-  });
+  // // También agregar tarea presionando Enter
+  // taskInput.addEventListener("keypress", function (event) {
+  //   if (event.key === "Enter") {
+  //     addTask();
+  //   }
+  // });
 
-  // Cargar las tareas al iniciar la página
-  loadTasks();
+  // // Cargar las tareas al iniciar la página
+  // loadTasks();
 </script>
